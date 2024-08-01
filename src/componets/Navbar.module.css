@@ -1,0 +1,101 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+ul{
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: #3a2138;
+  font-size: 1.2rem; /*18px */
+}
+
+/* Navbar styling */
+.navbar{
+  /* background-color: #333844; */
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 40px;
+  min-height: 70px;
+}
+
+.logo{
+  /* font-size: 30px; */
+  width: 100px;
+  /* font-family: "Montserrat", sans-serif; */
+  margin-right: auto;
+}
+
+/* ul */
+.navMenu{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 60px;
+}
+
+/* media-query */
+@media screen and (max-width: 780px){ 
+  .hamburger{
+    display: block;
+    cursor: pointer;
+  }
+
+  .bar{
+    background-color: #333844;
+    width: 20px;
+    height: 3px;
+    display: block;
+    margin: 5px;
+    -webkit-transition: 0.3s ease-in-out;
+    transition: 0.3s ease-in-out;
+  }
+
+  /* adding active class to the bar, formats an X when this happens */
+  .hamburger.active .bar:nth-child(1){  /* first bar, total of 3 */
+    transform: translateY(8px) rotate(45deg);
+  }
+  .hamburger.active .bar:nth-child(3){  /* third bar */
+    transform: translateY(-8px) rotate(-45deg);
+  }
+
+  /* navMenu */
+  .navMenu{
+    position: absolute;
+    flex-direction: column;
+    gap: 0;
+    top: 70px;
+    left: -100%;
+    text-align: start;
+    width: 100%;
+    transition: 0.7s ease-in-out;
+    background-color: aliceblue;
+    padding: 10px;
+  }
+
+  .navMenu.active{
+    left: 0;
+  }
+
+  .navMenu li {
+    margin: 16px 0;
+  }
+
+} 
+
+
+
+/* -----------------fonts -------------------*/
+/* .montserrat-regular-font {
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+} */
