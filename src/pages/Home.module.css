@@ -1,0 +1,27 @@
+.main-page {
+  min-height: 200vh;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-image: url("/public/images/orange.png");
+  /* background-position: 310px -200px, 0 0; */
+  /* background-size:auto; */
+  /* background-color: rgba(246, 245, 253, 255); */
+  background-attachment: scroll, scroll;
+  border-bottom: 1px solid #000; /*Added missing style and width*/
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: flex-start;
+  width: 100%;
+}
+@media screen and (max-width: 768px) {
+  .main-page {
+    padding-left: 1.3rem; /* Remove padding */
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: flex-start; /* Align items to the start vertically */
+    /* padding-top: 50px; Adjust this value to set the desired starting point */
+    height: 100vh; /* Full viewport height */
+    width: 100%;
+    background-color: #ded3d7;
+  }
+}

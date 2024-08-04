@@ -1,58 +1,153 @@
-import React, { useState } from 'react';
-import styles from './Navbar.module.css';
-import {Helmet} from 'react-helmet';
-import clsx from 'clsx';
-import logo from '../logo.svg';
+import React, { useEffect, useState } from "react";
+import styles from "./Navbar.module.css";
+import { Helmet } from "react-helmet";
+import clsx from "clsx";
+import { Link } from "react-router-dom";
+import ReactTypingEffect from "react-typing-effect";
+import {
+  motion,
+  useScroll,
+  useMotionValueEvent,
+  useAnimation,
+} from "framer-motion";
 
 const Navbar = () => {
-    const [isActive, setIsActive] = useState(false); //this is used to toggle class active in order to set a state for the navbar and the hamburger icon on click
+  const [isActive, setIsActive] = useState(false);
+  const [typing, setTyping] = useState(true);
+  const { scrollYProgress } = useScroll();
+  const controls = useAnimation();
 
-    const toggleActiveClass = () => { //checks if any nav link is clicked and toggles the class active
-        setIsActive(!isActive);
-    }
-    
-    const removeActiveClass = () => { //removes the active class from the nav link and resets 
-        setIsActive(false);
-    }
+  useEffect(() => {
+    // Listen to scrollYProgress changes and animate background accordingly
+    return scrollYProgress.onChange((latest) => {
+      if (latest > 0.4) {
+        setTyping(false);
+        controls.start({
+          backgroundColor: "#fff",
+          transition: { duration: 0.5 },
+        });
+      } else {
+        setTyping(true);
+        controls.start({
+          backgroundColor: "rgba(255, 255, 255, 0)",
+          transition: { duration: 0.3 },
+        });
+      }
+    });
+  }, [scrollYProgress, controls]);
 
-    return (
-        <div className="App-header">
-            <Helmet>
-            <link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet"/> 
-            </Helmet>
+  const toggleActiveClass = () => {
+    setIsActive(!isActive);
+  };
 
-            <header className="App-header">
-                <nav className={`${styles.navbar}`}> {/*unordered list of nav links */}
-                    {/* {logo here} */}
-                    {/* <img src={logo} className="App-logo" alt="logo" width="10rem"/> */}
-                    <img src={logo} className={styles.logo} alt="logo" href="Home"/>
-                    {/* <span>test</span> */}
-                    {/* <ul className={`${styles.navMenu} ${isActive ? styles.active : ''}`}> */}
-                    <ul className={clsx(styles.navMenu, isActive && styles.active)}>
-                        <li onClick={removeActiveClass}>
-                            {/* <a href="/" className={`${styles.navLink}`}>Home </a> */}
-                            <a href='/' className={styles.navLink}>Home</a>
-                        </li>
-                        <li onClick={removeActiveClass}>
-                            <a href ="/" className={styles.navLink}>Projects</a>
-                        </li>
-                        <li onClick={removeActiveClass}>
-                            <a href="/" className={styles.navLink}>About me</a>
-                        </li>
-                    </ul>
+  const removeActiveClass = () => {
+    setIsActive(false);
+  };
 
-                    <div className={clsx(styles.hamburger, isActive && styles.active, onclick={toggleActiveClass})}>
-                        <span className={styles.bar}></span>
-                        <span className={styles.bar}></span>
-                        <span className={styles.bar}></span>
-                    </div>
-                </nav>
+  return (
+    <div>
+      <Helmet>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+          rel="stylesheet"
+        />
+      </Helmet>
 
-            </header>
-        </div>
-    )
-}
+      <header className="fixed top-0 left-0 right-0">
+        <motion.div
+          animate={controls}
+          initial={{ backgroundColor: "rgba(255, 255, 255, 0)" }}
+          className="w-full"
+        >
+          <nav className={clsx(styles.navbar, styles.typingEffect, "h-20")}>
+            <Link to="/">
+              {typing ? (
+                <ReactTypingEffect
+                  text={["<i-ree>_"]}
+                  typingDelay={500}
+                  eraseDelay={2500}
+                  cursor=""
+                  speed={90}
+                  className="typing-effect-container"
+                  cursorClassName="text-slate-950"
+                  displayTextRenderer={(text) => {
+                    return (
+                      <h1>
+                        {text.split("").map((char, i) => {
+                          const key = `${i}`;
+                          return (
+                            <span
+                              key={key}
+                              style={
+                                i % 2 === 0
+                                  ? { color: "black" }
+                                  : { color: "violet" }
+                              }
+                              className="text-xl font-normal"
+                            >
+                              {char}
+                            </span>
+                          );
+                        })}
+                      </h1>
+                    );
+                  }}
+                />
+              ) : (
+                <h1>
+                  {"<i-ree>_".split("").map((char, i) => (
+                    <span
+                      key={i}
+                      style={
+                        i % 2 === 0 ? { color: "black" } : { color: "violet" }
+                      }
+                      className="text-xl font-normal"
+                    >
+                      {char}
+                    </span>
+                  ))}
+                </h1>
+              )}
+            </Link>
+
+            <ul className={clsx(styles.navMenu, isActive && styles.active)}>
+              <li onClick={removeActiveClass}>
+                <Link to="/" className={clsx(styles.navLink, "bar-slide")}>
+                  Home
+                </Link>
+              </li>
+              <li onClick={removeActiveClass}>
+                <Link
+                  to="/projects"
+                  className={clsx(styles.navLink, "bar-slide")}
+                >
+                  Projects
+                </Link>
+              </li>
+              <li onClick={removeActiveClass}>
+                <Link
+                  to="/about-me"
+                  className={clsx(styles.navLink, "bar-slide")}
+                >
+                  About me
+                </Link>
+              </li>
+            </ul>
+            <div
+              className={clsx(styles.hamburger, isActive && styles.active)}
+              onClick={toggleActiveClass}
+            >
+              <span className={styles.bar}></span>
+              <span className={styles.bar}></span>
+              <span className={styles.bar}></span>
+            </div>
+          </nav>
+        </motion.div>
+      </header>
+    </div>
+  );
+};
 
 export default Navbar;

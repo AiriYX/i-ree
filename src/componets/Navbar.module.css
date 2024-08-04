@@ -4,70 +4,81 @@
   box-sizing: border-box;
 }
 
-ul{
+ul {
   list-style: none;
 }
 
-a {
-  text-decoration: none;
-  color: #3a2138;
-  font-size: 1.2rem; /*18px */
-}
-
 /* Navbar styling */
-.navbar{
+.navbar {
   /* background-color: #333844; */
-  padding: 10px 20px;
+  padding: 0 15px 0 15px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 40px;
-  min-height: 70px;
+  /* min-height: 70px; */
 }
 
-.logo{
+.logo {
   /* font-size: 30px; */
-  width: 100px;
+  /* width: 100px; */
   /* font-family: "Montserrat", sans-serif; */
   margin-right: auto;
+  font-size: 1.2rem; /*18px */
+  font-weight: 400;
+}
+
+.typingFont {
+  font-size: 2rem;
 }
 
 /* ul */
-.navMenu{
+.navMenu {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  gap: 60px;
+  gap: 30px;
+  margin-left: auto;
 }
 
 /* media-query */
-@media screen and (max-width: 780px){ 
-  .hamburger{
-    display: block;
+@media screen and (max-width: 780px) {
+  .hamburger {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     cursor: pointer;
+    gap: 5px;
   }
 
-  .bar{
-    background-color: #333844;
+  .bar {
+    background-color: black;
     width: 20px;
-    height: 3px;
+    height: 2px;
     display: block;
-    margin: 5px;
+    /* margin: 5px; */
     -webkit-transition: 0.3s ease-in-out;
     transition: 0.3s ease-in-out;
   }
 
   /* adding active class to the bar, formats an X when this happens */
-  .hamburger.active .bar:nth-child(1){  /* first bar, total of 3 */
-    transform: translateY(8px) rotate(45deg);
+  .hamburger.active .bar:nth-child(1) {
+    transform: translate(3px, 7px) rotate(45deg);
   }
-  .hamburger.active .bar:nth-child(3){  /* third bar */
-    transform: translateY(-8px) rotate(-45deg);
+
+  .hamburger.active .bar:nth-child(2) {
+    opacity: 0;
+    transition-duration: 0ms;
+  }
+
+  .hamburger.active .bar:nth-child(3) {
+    transform: translate(3px, -7px) rotate(-45deg);
   }
 
   /* navMenu */
-  .navMenu{
+  .navMenu {
     position: absolute;
     flex-direction: column;
     gap: 0;
@@ -76,21 +87,18 @@ a {
     text-align: start;
     width: 100%;
     transition: 0.7s ease-in-out;
-    background-color: aliceblue;
+    background-color: whitesmoke; /*ded3d7*/
     padding: 10px;
   }
 
-  .navMenu.active{
+  .navMenu.active {
     left: 0;
   }
 
   .navMenu li {
     margin: 16px 0;
   }
-
-} 
-
-
+}
 
 /* -----------------fonts -------------------*/
 /* .montserrat-regular-font {

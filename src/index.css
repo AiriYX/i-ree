@@ -1,13 +1,52 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 body {
   margin: 0;
-  font-family: "Montserrat", -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+    "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* background-color: #ded3d7; */
+  background-color: #efeff9;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+/* ----additional way to improve: will indicate that we are on a certain page----- */
+.bar-slide {
+  text-decoration: none;
+  color: #000000;
+  font-size: 20px;
+  font-weight: 400;
+}
+.bar-slide::after {
+  border-bottom: 1.5px solid #000000;
+  content: "";
+  display: block;
+  position: relative;
+  top: 0.5px; /* Change the vertical position of the underline */
+  transition: width 0.35s;
+  width: 0%;
+}
+
+.bar-slide:hover::after,
+nav .bar-slide:active::after {
+  cursor: pointer;
+  /* text-decoration: underline;
+  text-decoration-style: underline-offset-4; */
+  /* color: #5497A7; */
+  /* transition-duration: 500ms; */
+  width: 100%;
+}
+
+@media (max-width: 979px) {
+  nav .bar-slide::after {
+    top: 0px; /* Change the vertical position of the underline */
+  }
 }
