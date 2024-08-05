@@ -12,19 +12,47 @@ export const Home = () => {
 
   return (
     <>
-      <header>
+      <Helmet>
         <meta name="viewport" content="initial-scale=1, width=device-width" />
         <title>Home</title>
-      </header>
-      <div className={clsx(styles["main-page"], "pt-24")}>
-        <div className={clsx(styles["intro"], "capitalize", "text-5xl", "")}>
-          <h1>
-            Hello, I'm Airi.
-            <br />A current student at CCNY.
-          </h1>
-          <div></div>
+      </Helmet>
+      <div className={clsx(styles["background-div"], "p-24")}>
+        <div className={clsx("capitalize", "p-9")}>
+          {/* styles["content-border"] */}
+          <div className={clsx(styles["header-left"])}>
+            <h1
+              className={clsx(
+                "text-6xl",
+                "pb-6",
+                "leading-tight",
+                "font-medium"
+              )}
+            >
+              Hello, I'm Airi. {/* make my name interactive */}
+              <br /> A current student at CCNY.
+            </h1>
+          </div>
+          <div className={clsx(styles["description-left"])}>
+            <p className={clsx()}>
+              I am a computer science major with a strong passion for software
+              development and technology. Currently, I'm focused on learning
+              front-end web development, with experience in Java and C++.
+            </p>
+            <br />
+            <p className={clsx("pb-8")}>
+              My core skillsets include React, HTML, CSS, JavaScript, command
+              line, and Git, which I utilize to build responsive and engaging
+              web applications.
+            </p>
+          </div>
+          <div className={styles.headingLine}></div>{" "}
+          <div className={styles.headingLine}></div>{" "}
+          <div className={styles.headingLine}></div>{" "}
+          {/* line indicating new section*/}
         </div>
       </div>
+
+      {/* end of bg div*/}
     </>
   );
 };

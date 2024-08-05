@@ -13,10 +13,10 @@ body {
   background-color: #efeff9;
 }
 
-code {
+/* code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
-}
+} */
 
 /* ----additional way to improve: will indicate that we are on a certain page----- */
 .bar-slide {

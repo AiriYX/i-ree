@@ -83,7 +83,7 @@ const Navbar = () => {
                               style={
                                 i % 2 === 0
                                   ? { color: "black" }
-                                  : { color: "violet" }
+                                  : { color: "#FF7F50" }
                               }
                               className="text-xl font-normal"
                             >

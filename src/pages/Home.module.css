@@ -1,6 +1,10 @@
-.main-page {
-  min-height: 200vh;
-  background-size: 100%;
+body {
+  min-height: 100%;
+}
+
+.background-div {
+  min-height: 100vh;
+  background-size: cover;
   background-repeat: no-repeat;
   background-image: url("/public/images/orange.png");
   /* background-position: 310px -200px, 0 0; */
@@ -12,6 +16,7 @@
   justify-content: center; /* Center horizontally */
   align-items: flex-start;
   width: 100%;
+  z-index: -1;
 }
 @media screen and (max-width: 768px) {
   .main-page {
@@ -24,4 +29,46 @@
     width: 100%;
     background-color: #ded3d7;
   }
+}
+
+/* .content-border {
+  border-bottom: 1.4px solid #000;
+  padding: 10px;
+  margin: 10px;
+} */
+
+p {
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center;
+  width: 100%;
+  z-index: 1;
+  font-size: 17px;
+  opacity: 0.75;
+}
+
+.description-left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Keep this if you want left-aligned text */
+  padding: 0 20px 0 0; /* Uniform padding */
+  max-width: 69%; /*Limit the width of the container */
+}
+
+.header-left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Keep this if you want left-aligned text */
+  padding: 0 20px 0 0; /* Uniform padding */
+}
+
+.headingLine {
+  background-color: #000000;
+  width: 75%;
+  height: 1px;
+  position: absolute;
+  /* top: 0%; */
+  /* bottom: auto; */
+  /* left: 0%; */
+  z-index: 1;
 }
