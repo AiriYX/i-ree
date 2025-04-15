@@ -19,7 +19,6 @@ ReactFolio is a personal portfolio website built using React. It showcases my sk
 - HTML
 - CSS
 - JavaScript
-- testing confuseion
 
 ## Contributing:
 
